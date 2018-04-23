@@ -1,0 +1,40 @@
+@import 'src/styles.scss';
+
+.heading {
+  .logo {
+    width: rem(128);
+    height: rem(128);
+    border-radius: 0 rem(8) 0 rem(8);
+    margin: auto;
+  }
+  .logo-container {
+    width: rem(403);
+    display: flex;
+    align-items: flex-start;
+    margin: auto;
+    h1 {
+      margin: rem(-30) 0 0;
+    }
+  }
+  h2 {
+    text-align: center;
+    margin: rem(154) 0 rem(21);
+  }
+}
+.container {
+  display: flex;
+  justify-content: space-around;
+  width: rem(702);
+  margin: rem(64) auto;
+  .logo-container, .description-container {
+    width: rem(287);
+  }
+  p {
+    width: rem(287);
+  }
+  .spacer {
+    height: rem(300);
+    margin: 0 rem(95);
+    border: 1px solid map-get($colors, black);
+  }
+}

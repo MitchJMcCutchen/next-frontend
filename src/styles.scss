@@ -1,2 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css"
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,700');
+
+$colors: (
+  white: #f7f7f7,
+  black: #0A1C24,
+  next-yellow: #FEC967,
+);
+// Functions
+
+@function rem($pixel) {
+  @return $pixel / 16 * 1rem;
+}
+
+html,
+body,
+app-root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: map-get($colors, white);
+}
+
+h1 {
+  font-size: rem(90);
+  font-family: 'Open Sans';
+  font-weight: 700;
+}
+
+h2 {
+  font-size: rem(36);
+  font-family: 'Open Sans';
+  font-weight: 300;
+}
+
+h3 {
+  font-size: rem(20);
+  font-family: 'Open Sans';
+  font-weight: 700;
+}
+
+p {
+  font-size: rem(14);
+  font-family: 'Open Sans';
+  font-weight: 300;
+}
+
+.logo {
+  background-color: map-get($colors, next-yellow);
+}

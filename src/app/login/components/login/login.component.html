@@ -1,6 +1,10 @@
-<h2>find what's</h2>
-<h1>NEXT</h1>
-<div class="logo"></div>
+<div class="heading">
+  <h2>find what's</h2>
+  <div class="logo-container">
+    <h1>NEXT</h1>
+    <div class="logo"></div>
+  </div>
+</div>
 <div class="container">
   <div class="login-container">
     <h3>LOGIN/SIGN UP</h3>
@@ -11,11 +15,11 @@
       <mat-form-field>
         <input matInput type="password" formControlName="password" placeholder="password">
       </mat-form-field>
-      <button type="submit" (click)="onLogin()" class="login">LOGIN</button>
-      <button (click)="onSignUp()" class="signup">Sign Up</button>
-      <button (click)="onLogOut()">Logout</button>
+      <button mat-button type="submit" (click)="onLogin()" class="login">LOGIN</button>
+      <button mat-button (click)="onSignUp()" class="signup">Sign Up</button>
     </form>
   </div>
+  <div class="spacer"></div>
   <div class="description-container">
     <p>
       Never have trouble deciding what to read next.
