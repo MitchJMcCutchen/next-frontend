@@ -1,0 +1,32 @@
+<h2>find what's</h2>
+<h1>NEXT</h1>
+<div class="logo"></div>
+<div class="container">
+  <div class="login-container">
+    <h3>LOGIN/SIGN UP</h3>
+    <form [formGroup]="loginForm">
+      <mat-form-field>
+        <input matInput type="email" formControlName="email" placeholder="email">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" formControlName="password" placeholder="password">
+      </mat-form-field>
+      <button type="submit" (click)="onLogin()" class="login">LOGIN</button>
+      <button (click)="onSignUp()" class="signup">Sign Up</button>
+      <button (click)="onLogOut()">Logout</button>
+    </form>
+  </div>
+  <div class="description-container">
+    <p>
+      Never have trouble deciding what to read next.
+      Reader reviews can run the gambit. The same
+      book could be called "the best book of all time"
+      by one reviewer and "total trash" by another.
+      How do you wade through the muck and find
+      something you are confident you will enjoy?
+      NEXT matches you with other people who share
+      your taste in books and makes recommendations
+      based on what else they find entertaining.
+    </p>
+  </div>
+</div>
