@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 
+import { SetUserAction } from '../../store/actions/set-user.action';
+import { IAppState } from './../../../interfaces/IAppState.interface';
 import { AuthService } from './../../services/auth.service';
 
 @Component({
@@ -16,7 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(
     public auth: AuthService,
     private fb: FormBuilder,
-    public router: Router
+    public router: Router,
+    public store: Store<IAppState>
   ) { }
 
   ngOnInit() {
@@ -31,7 +35,10 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    this.auth.login(this.loginForm.value).subscribe(res => this.setLocalStorage(res));
+    this.auth.login(this.loginForm.value).subscribe(res => {
+      this.setLocalStorage(res);
+      this.store.dispatch(new SetUserAction(res.body.email, res.body.firstName, res.body.lastName, res.body.profilePic));
+    });
   }
 
   onSignUp() {

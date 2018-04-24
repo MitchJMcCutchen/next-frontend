@@ -1,3 +1,4 @@
+import { createFeatureSelector } from '@ngrx/store';
 import { cloneDeep, merge } from 'lodash';
 
 import { IUserAction } from '../../interfaces/IUserAction.interface';
@@ -39,3 +40,4 @@ export function userReducer(
     }
   }
 
+export const userState = createFeatureSelector<IUserState>('user');

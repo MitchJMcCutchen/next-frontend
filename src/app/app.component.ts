@@ -15,7 +15,6 @@ export class AppComponent {
     public store: Store<any>,
     public auth: AuthService
   ) {
-    console.log('app constructor');
     if (this.auth.isAuthenticated()) {
       this.store.dispatch(new SetUserAction(
         localStorage.getItem('email'),
