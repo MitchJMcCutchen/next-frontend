@@ -5,7 +5,9 @@
 $colors: (
   white: #f7f7f7,
   black: #0A1C24,
+  gray: #979797,
   next-yellow: #FEC967,
+  next-red: #E97565
 );
 // Functions
 
@@ -22,30 +24,52 @@ app-root {
   background-color: map-get($colors, white);
 }
 
+h1, h2, h3, h4, p {
+  color: map-get($colors, black);
+}
+
 h1 {
-  font-size: rem(90);
-  font-family: 'Open Sans';
+  font-size: rem(34);
+  font-family: 'Open Sans', sans-serif;
   font-weight: 700;
 }
 
 h2 {
   font-size: rem(36);
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-weight: 300;
 }
 
 h3 {
   font-size: rem(20);
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-weight: 700;
 }
 
 p {
   font-size: rem(14);
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-weight: 300;
+  &.tutorial {
+    font-style: italic;
+  }
 }
 
 .logo {
   background-color: map-get($colors, next-yellow);
+}
+
+.next-btn {
+  background-color: map-get($colors, next-yellow);
+  min-width: rem(64);
+  border-radius: 0 rem(8) 0 rem(8);
+  h3 {
+    margin: 0;
+    color: map-get($colors, white);
+    font-size: rem(12);
+  }
+}
+
+.clear {
+  clear: both;
 }

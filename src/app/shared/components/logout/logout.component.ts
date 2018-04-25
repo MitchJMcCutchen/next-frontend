@@ -1,33 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
 
-import { AuthService } from '../../../login/services/auth.service';
 import { IAppState } from './../../../interfaces/IAppState.interface';
+import { AuthService } from './../../../login/services/auth.service';
 import { UnsetUserAction } from './../../../login/store/actions/unset-user.action';
-import { getBooks } from './../../store/selectors/my-shelf.selectors';
 
 @Component({
-  selector: 'app-book-container',
-  templateUrl: './book-container.component.html',
-  styleUrls: ['./book-container.component.scss']
+  selector: 'app-logout',
+  templateUrl: './logout.component.html',
+  styleUrls: ['./logout.component.scss']
 })
-export class BookContainerComponent implements OnInit {
+export class LogoutComponent implements OnInit {
 
-  myShelf$: Observable<any>;
-
-  get shelfLength() {
-    return this.myShelf$.map(books => books.length);
-  }
+  @Output()
+  closeDialog: EventEmitter<boolean> = new EventEmitter();
 
   constructor(
     public auth: AuthService,
     public router: Router,
     public store: Store<IAppState>
-  ) {
-    this.myShelf$ = this.store.select(getBooks);
-  }
+  ) { }
 
   ngOnInit() {
   }
@@ -35,6 +28,7 @@ export class BookContainerComponent implements OnInit {
   onLogOut() {
     this.auth.logout().subscribe(res => {
       if (res.message) {
+        this.closeDialog.emit(true);
         this.router.navigate(['/login']);
         localStorage.clear();
         this.store.dispatch(new UnsetUserAction());
@@ -42,4 +36,7 @@ export class BookContainerComponent implements OnInit {
     });
   }
 
+  onClose() {
+    this.closeDialog.emit(true);
+  }
 }

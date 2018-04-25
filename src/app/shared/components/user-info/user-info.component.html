@@ -1,0 +1,13 @@
+<div *ngIf="authorized" (click)="toggleOptions()" class="container">
+  <p *ngIf="(user | async).firstName && (user | async).lastName">
+    {{ (user | async).firstName }} {{ (user | async).lastName}}
+  </p>
+  <p *ngIf="(user | async).firstName && !(user | async).lastName">
+    {{ (user | async).firstName }}
+  </p>
+  <p *ngIf="!(user | async).firstName">
+    {{ (user | async).email }}
+  </p>
+  <img src="{{ (user | async).pic }}"/>
+</div>
+<app-logout *ngIf="showOptions" (closeDialog)="toggleOptions()"></app-logout>

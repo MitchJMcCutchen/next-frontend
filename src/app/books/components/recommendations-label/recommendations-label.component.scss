@@ -1,0 +1,17 @@
+@import "src/styles.scss";
+
+h1 {
+  letter-spacing: rem(1.21);
+}
+.text-container {
+  width: rem(284);
+  text-align: right;
+  float: left;
+  margin-left: rem(93);
+  h1 {
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+}

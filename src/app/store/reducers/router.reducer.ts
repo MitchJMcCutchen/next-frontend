@@ -24,5 +24,4 @@ export class CustomSerializer
   }
 }
 
-export const getRouterState = createFeatureSelector<fromRouter.RouterReducerState<RouterStateUrl>
->('router');
+export const getRouterState = (state) => state.router;

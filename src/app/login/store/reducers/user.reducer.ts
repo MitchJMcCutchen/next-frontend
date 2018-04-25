@@ -11,10 +11,10 @@ import { userActionTypes as actionTypes } from '../actions/action.types';
 
 
 const INITIAL_STATE: IUserState = {
-  email: '',
-  firstName: '',
-  lastName: '',
-  pic: '',
+  email: undefined,
+  firstName: undefined,
+  lastName: undefined,
+  pic: undefined,
 };
 
 export function userReducer(

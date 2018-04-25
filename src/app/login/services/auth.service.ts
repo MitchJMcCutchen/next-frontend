@@ -16,19 +16,19 @@ export class AuthService {
   ) { }
 
   login(body): Observable<any> {
-    return this.http.post(this.API_URL + `/users/login`, body, {
+    return this.http.post(`${this.API_URL}/users/login`, body, {
       observe: 'response'
     });
   }
 
   signUp(body): Observable<any> {
-    return this.http.post(this.API_URL + `/users`, body, {
+    return this.http.post(`${this.API_URL}/users`, body, {
       observe: 'response'
     });
   }
 
   logout(): Observable<any> {
-    return this.http.delete(this.API_URL + `/users/logout`);
+    return this.http.delete(`${this.API_URL}/users/logout`);
   }
 
   isAuthenticated() {

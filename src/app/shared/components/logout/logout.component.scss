@@ -1,0 +1,14 @@
+@import "src/styles.scss";
+
+mat-card {
+  width: rem(250);
+  position: absolute;
+  right: rem(127);
+  top: rem(100);
+}
+div {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+}

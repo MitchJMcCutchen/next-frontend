@@ -1,4 +1,8 @@
-<p>
-  book-container works!
+<div class="divider"></div>
+<p *ngIf="(shelfLength | async) < 1" class='tutorial'>
+  We need a minimum of 5 books added to your shelf before
+  we feel safe recommending anything to you. Go ahead,
+  add your first book. We'll walk you through it!
 </p>
-<button mat-button (click)="onLogOut()">Logout</button>
+<app-recommendations></app-recommendations>
+<app-my-shelf></app-my-shelf>

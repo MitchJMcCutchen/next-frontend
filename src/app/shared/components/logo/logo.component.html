@@ -1,7 +1,10 @@
-<div class="heading">
-  <h2>find what's</h2>
+<div class="heading" [className]='url | async'>
+  <h2 *ngIf="(url | async) === 'login'">find what's</h2>
   <div class="logo-container">
-    <h1>NEXT</h1>
+    <div class="text">
+      <h1>NEXT</h1>
+      <p *ngIf="(url | async) === 'books'">books</p>
+    </div>
     <div class="logo"></div>
   </div>
 </div>
