@@ -6,3 +6,7 @@ export const getBooks = createSelector(
   myShelfState,
   (state) => state.books
 );
+export const getCurrentBook = createSelector(
+  myShelfState,
+  (state) => state.current
+);

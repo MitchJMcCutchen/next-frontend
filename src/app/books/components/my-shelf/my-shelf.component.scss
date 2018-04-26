@@ -3,3 +3,22 @@
 .view {
   margin: rem(86) 0 0;
 }
+.next-btn {
+  width: rem(0);
+  min-width: rem(0);
+  height: rem(32);
+  display: flex;
+  justify-content: space-around;
+  mat-icon {
+    margin-top: rem(-6);
+    color: map-get($colors, white);
+    font-size: rem(26);
+  }
+}
+.container {
+  width: rem(256);
+  margin: rem(60) auto 0;
+  display: flex;
+  justify-content: space-between;
+}
+

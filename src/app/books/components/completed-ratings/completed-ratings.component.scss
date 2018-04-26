@@ -1,0 +1,12 @@
+@import "src/styles.scss";
+
+.container {
+  margin: rem(32) auto 0;
+  width: rem(200);
+  display: flex;
+  justify-content: space-between;
+  mat-icon {
+    color: map-get($colors, next-yellow);
+    font-size: rem(36);
+  }
+}

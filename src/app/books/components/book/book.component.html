@@ -1,0 +1,8 @@
+<div class="container" [ngStyle]="indexDif">
+  <img [@coverAnim]="state" (click)="onSelect()" src="{{ cover }}"/>
+  <app-completed-ratings [state]="state" [ratings]="ratings"></app-completed-ratings>
+  <h3 [@titleAnim]="state">{{ book.title }}</h3>
+  <p [@authorAnim]="state"*ngFor="let author of book.authors">
+    {{ author }}
+  </p>
+</div>

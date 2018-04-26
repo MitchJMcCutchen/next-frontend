@@ -7,12 +7,16 @@ $colors: (
   black: #0A1C24,
   gray: #979797,
   next-yellow: #FEC967,
-  next-red: #E97565
+  next-red: #E97565,
+  next-red-transparent: rgba(255, 227, 174, 0.3)
 );
 // Functions
 
 @function rem($pixel) {
   @return $pixel / 16 * 1rem;
+}
+.mat-ripple-element {
+  background-color: map-get($colors, next-red-transparent);
 }
 
 html,
@@ -67,6 +71,9 @@ p {
     margin: 0;
     color: map-get($colors, white);
     font-size: rem(12);
+  }
+  &:disabled {
+    opacity: .5;
   }
 }
 
