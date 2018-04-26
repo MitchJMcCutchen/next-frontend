@@ -1,0 +1,12 @@
+@import "src/styles.scss";
+
+.divider {
+  width: rem(575);
+  margin: 0 auto rem(32);
+  border: 1px solid map-get($colors, gray);
+}
+.tutorial {
+  width: rem(366);
+  margin: auto;
+  text-align: center;
+}

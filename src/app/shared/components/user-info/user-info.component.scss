@@ -1,0 +1,16 @@
+@import "src/styles.scss";
+
+.container {
+  width: rem(-230);
+  margin: rem(-75) rem(128) 0 0;
+  float: right;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  img {
+    width: rem(32);
+    height: rem(32);
+    margin-left: rem(10);
+    border-radius: 0 rem(8) 0 rem(8);
+  }
+}

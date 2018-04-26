@@ -1,21 +1,25 @@
-<h2>find what's</h2>
-<h1>NEXT</h1>
-<div class="logo"></div>
 <div class="container">
   <div class="login-container">
     <h3>LOGIN/SIGN UP</h3>
     <form [formGroup]="loginForm">
       <mat-form-field>
         <input matInput type="email" formControlName="email" placeholder="email">
+        <mat-error *ngIf="loginForm.controls['email'].hasError('invalidCred')">Incorrect email or password</mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput type="password" formControlName="password" placeholder="password">
       </mat-form-field>
-      <button type="submit" (click)="onLogin()" class="login">LOGIN</button>
-      <button (click)="onSignUp()" class="signup">Sign Up</button>
-      <button (click)="onLogOut()">Logout</button>
+      <mat-form-field [@confirmPassword]='animTrigger'>
+        <input matInput type="password" formControlName="confirmPassword" placeholder="confirm password">
+        <mat-error *ngIf="loginForm.controls['confirmPassword'].hasError('noMatch')">Your passwords do not match</mat-error>
+      </mat-form-field>
+      <div class="buttons" [@signUp]='animTrigger'>
+        <button mat-button type="submit" (click)="onLogin()" class="login">LOGIN</button>
+        <button mat-button (click)="onSignUp()" class="signup">Sign Up</button>
+      </div>
     </form>
   </div>
+  <div class="spacer"></div>
   <div class="description-container">
     <p>
       Never have trouble deciding what to read next.

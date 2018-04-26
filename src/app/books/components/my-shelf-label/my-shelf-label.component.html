@@ -1,0 +1,8 @@
+<div class="text-container">
+  <h1>MY SHELF</h1>
+  <p *ngIf="(bookLength | async) !== 1">{{ bookLength | async }} books</p>
+  <p *ngIf="(bookLength | async) === 1">{{ bookLength | async }} book</p>
+</div>
+<button mat-button class="next-btn">
+  <h3>Add</h3>
+</button>

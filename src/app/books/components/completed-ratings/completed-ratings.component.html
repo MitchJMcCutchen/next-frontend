@@ -1,0 +1,22 @@
+<div class="container">
+  <div [@plotAnim]="state" class="plot">
+    <mat-icon *ngIf="ratings.plot">bookmark</mat-icon>
+    <mat-icon *ngIf="!ratings.plot">bookmark_border</mat-icon>
+  </div>
+  <div [@characterAnim]="state" class="character">
+    <mat-icon *ngIf="ratings.characters">bookmark</mat-icon>
+    <mat-icon *ngIf="!ratings.characters">bookmark_border</mat-icon>
+  </div>
+  <div [@styleAnim]="state" class="style">
+    <mat-icon *ngIf="ratings.style">bookmark</mat-icon>
+    <mat-icon *ngIf="!ratings.style">bookmark_border</mat-icon>
+  </div>
+  <div [@genreAnim]="state" class="genre">
+    <mat-icon *ngIf="ratings.genre">bookmark</mat-icon>
+    <mat-icon *ngIf="!ratings.genre">bookmark_border</mat-icon>
+  </div>
+  <div [@overallAnim]="state" class="overall">
+    <mat-icon *ngIf="ratings.overall">bookmark</mat-icon>
+    <mat-icon *ngIf="!ratings.overall">bookmark_border</mat-icon>
+  </div>
+</div>

@@ -10,7 +10,8 @@ import { LoginGuardService } from './shared/guards/login-guard.service';
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [LoginGuardService] },
   { path: 'books', component: BookContainerComponent, canActivate: [AuthGuardService] },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({

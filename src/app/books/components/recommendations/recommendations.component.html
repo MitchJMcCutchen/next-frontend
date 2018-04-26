@@ -1,0 +1,7 @@
+<div class="view">
+  <app-recommendations-label></app-recommendations-label>
+  <div class="clear"></div>
+  <div class="not-enough-books" *ngIf="( shelfLength | async ) < 5">
+    <h3>Add {{ 5 - ( shelfLength | async ) }} more books</h3>
+  </div>
+</div>
