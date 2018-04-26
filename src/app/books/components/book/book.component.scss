@@ -3,7 +3,7 @@
 .container {
   width: rem(300);
   margin: auto;
-  left: 39.2%;
+  left: 50%;
   position: absolute;
   transition: transform .2s ease-in-out;
   transition-delay: .3s;
@@ -13,6 +13,12 @@
     height: rem(192);
     margin: auto;
     transform-origin: 50% 100%;
+    transition: box-shadow .2s ease-in-out;
+    transition-delay: 0s;
+    &.active {
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      transition-delay: .3s;
+    }
   }
   h3, p {
     text-align: center;

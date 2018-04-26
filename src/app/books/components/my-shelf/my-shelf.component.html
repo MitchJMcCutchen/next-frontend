@@ -1,5 +1,6 @@
 <div class="view">
   <app-my-shelf-label></app-my-shelf-label>
+  <div class="clear"></div>
   <app-book [book]="book" [bookIndex]="i" *ngFor="let book of ( books | async ); let i = index; trackBy: trackBook"></app-book>
   <div class="clear"></div>
   <div class="container">
