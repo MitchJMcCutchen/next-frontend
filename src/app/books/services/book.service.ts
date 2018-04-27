@@ -18,4 +18,8 @@ export class BookService {
     return this.http.get(`${this.API_URL}/booklist`);
   }
 
+  searchBooks(search): Observable<any> {
+    return this.http.get(`${this.API_URL}/books/search/${search}`);
+  }
+
 }

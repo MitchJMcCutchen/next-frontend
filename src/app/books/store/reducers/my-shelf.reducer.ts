@@ -1,4 +1,4 @@
-import { createFeatureSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { cloneDeep, merge } from 'lodash';
 
 import { myShelfActionTypes as actionTypes } from '../actions/action.types';
@@ -32,6 +32,15 @@ export function myShelfReducer(
     case actionTypes.GET_MY_SHELF_SUCCESS: {
       const newState = cloneDeep(state);
 
+      if (action.value.length === 0) {
+        newState.books = INITIAL_STATE.books;
+        return merge(newState, {
+          current: INITIAL_STATE.current,
+          loading: false,
+          loaded: true
+        });
+      }
+
       return merge(newState, {
         current: {
           index: 0,
@@ -40,6 +49,13 @@ export function myShelfReducer(
         books: [...action.value],
         loading: false,
         loaded: true
+      });
+    }
+    case actionTypes.OPEN_SEARCH: {
+      const newState = cloneDeep(state);
+
+      return merge(newState, {
+        current: INITIAL_STATE.current
       });
     }
     case actionTypes.SHIFT_BOOKS: {
@@ -63,4 +79,8 @@ export function myShelfReducer(
   }
 }
 
-export const myShelfState = createFeatureSelector<IMyShelfState>('myShelf');
+export const myShelfState = createFeatureSelector<any>('myShelf');
+export const getShelfState = createSelector(
+  myShelfState,
+  (state) => state.shelf
+);

@@ -16,6 +16,15 @@ $colors: (
   @return $pixel / 16 * 1rem;
 }
 
+@mixin bookGrad {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fec967+76,e97565+100 */
+  background: map-get($colors, next-yellow); /* Old browsers */
+  background: -moz-linear-gradient(-45deg, map-get($colors, next-yellow) 47%, map-get($colors, next-red) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, map-get($colors, next-yellow) 47%,map-get($colors, next-red) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, map-get($colors, next-yellow) 47%,map-get($colors, next-red) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fec967', endColorstr='#E97565',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
 .mat-ripple-element {
   background-color: map-get($colors, next-red-transparent);
 }
@@ -62,7 +71,8 @@ p {
 }
 
 .logo {
-  background-color: map-get($colors, next-yellow);
+  // background-color: map-get($colors, next-yellow);
+  @include bookGrad();
 }
 
 .next-btn {

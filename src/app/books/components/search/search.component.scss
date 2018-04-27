@@ -1,0 +1,24 @@
+@import "src/styles.scss";
+
+mat-icon {
+  margin: rem(5) 0 0 rem(5);
+  font-size: rem(28);
+  color: map-get($colors, white);
+}
+input {
+  width: rem(260);
+  margin: 0 0 0 rem(8);
+  position: relative;
+  top: rem(-7);
+  background: none;
+  border: none;
+  font-size: rem(20);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  &:focus {
+    outline: none;
+  }
+}
+form {
+  display: inline-block;
+}

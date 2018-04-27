@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { routerReducer, RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
-import { StoreModule } from '@ngrx/store';
+import { combineReducers, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { BooksModule } from './books/books.module';
 import { GetMyShelfEffect } from './books/store/effects/get-shelf.effect';
 import { myShelfReducer } from './books/store/reducers/my-shelf.reducer';
+import { searchReducer } from './books/store/reducers/search.reducer';
 import { LoginModule } from './login/login.module';
 import { userReducer } from './login/store/reducers/user.reducer';
 import { LogoComponent } from './shared/components/logo/logo.component';
@@ -34,7 +35,7 @@ import { CustomSerializer } from './store/reducers/router.reducer';
     StoreModule.forRoot({
       router: routerReducer,
       user: userReducer,
-      myShelf: myShelfReducer
+      myShelf: combineReducers(myShelfReducer, searchReducer)
     }),
     EffectsModule.forRoot([
       GetMyShelfEffect

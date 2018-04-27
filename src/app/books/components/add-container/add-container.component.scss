@@ -1,0 +1,35 @@
+@import "src/styles.scss";
+@import "src/styles.scss";
+
+@function calc-width($window, $width){
+  $difference: $window - $width;
+  @return rem($difference);
+}
+
+.view {
+  margin: auto;
+  padding: rem(10) 0 0;
+  position: relative;
+  width: unquote("calc(100% - 35rem)");
+  z-index: 10;
+}
+.add-container {
+  width: rem(64);
+  height: rem(36);
+  position: absolute;
+  top: rem(10);
+  border-radius: 0 rem(8) 0 rem(8);
+  overflow: hidden;
+  @include bookGrad();
+}
+.close {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.show-results {
+  margin-top: rem(63);
+}
