@@ -40,6 +40,21 @@ export function searchReducer(
         }
       });
     }
+    case actionTypes.SHIFT_BOOK_RESULTS: {
+      const newState = cloneDeep(state);
+      newState.currentResult.index = newState.currentResult.index + action.moveIndex;
+      if (newState.searchResults[newState.currentResult.index]) {
+        const book = newState.searchResults[newState.currentResult.index].bookId;
+
+        return merge(newState, {
+          currentResult: {
+            bookId: book
+          }
+        });
+      } else {
+        return state;
+      }
+    }
     default: {
       return state;
     }

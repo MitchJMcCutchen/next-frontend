@@ -7,6 +7,7 @@ import { getSearchResults } from '../../store/selectors/search.selectors';
 import { addBoxAnim } from './../../animations/add.animations';
 import { IBookResult } from './../../interfaces/IBookSearch.interface';
 import { OpenSearchAction } from './../../store/actions/open-search.action';
+import { ShiftBooksResultAction } from './../../store/actions/shift-book-results.action';
 import { ShiftBooksAction } from './../../store/actions/shift-books.action';
 
 @Component({
@@ -48,6 +49,14 @@ export class AddContainerComponent implements OnInit {
   onClose() {
     this.state = 'inactive';
     this.store.dispatch(new ShiftBooksAction(1));
+  }
+
+  onNext() {
+    this.store.dispatch(new ShiftBooksResultAction(1));
+  }
+
+  onPrevious() {
+    this.store.dispatch(new ShiftBooksResultAction(-1));
   }
 
   trackBook(index, book) {

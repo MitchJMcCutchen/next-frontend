@@ -12,7 +12,9 @@ const searchActionTypes = {
 
   SEARCH: '[Search] Search',
   SEARCH_SUCCESS: '[Search] Search Success',
-  SEARCH_FAILURE: '[Search] Search Failure'
+  SEARCH_FAILURE: '[Search] Search Failure',
+
+  SHIFT_BOOK_RESULTS: '[Search] Shift Book Results'
 };
 
 export {myShelfActionTypes, searchActionTypes};
