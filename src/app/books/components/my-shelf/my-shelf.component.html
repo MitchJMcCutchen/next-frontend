@@ -1,8 +1,13 @@
 <div class="view">
   <app-my-shelf-label></app-my-shelf-label>
+  <app-add-container></app-add-container>
+  <div class="clear"></div>
+  <div class="empty-book" *ngIf="(index | async) === -1">
+    <mat-icon>add</mat-icon>
+  </div>
   <app-book [book]="book" [bookIndex]="i" *ngFor="let book of ( books | async ); let i = index; trackBy: trackBook"></app-book>
   <div class="clear"></div>
-  <div class="container">
+  <div *ngIf="(index | async) !== -1" class="container">
     <button mat-button [disabled]="(index | async) === (books | async).length - 1" class="next-btn" (click)="onNext()"><mat-icon>keyboard_arrow_left</mat-icon></button>
     <button mat-button [disabled]="(index | async) === 0" class="next-btn" (click)="onPrevious()"><mat-icon>keyboard_arrow_right</mat-icon></button>
   </div>

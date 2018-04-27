@@ -1,0 +1,13 @@
+<div class="close" (click)="onClose()" *ngIf="state !== 'inactive'"></div>
+<div class="view">
+  <div [@addBoxAnim]="state" class="add-container">
+    <app-search (searching)="onSearch()" *ngIf="state === 'search' || state === 'show'">
+    </app-search>
+    <div class="show-results" *ngIf="state === 'show'">
+      <app-book-result [book]="book" [bookIndex]="i" *ngFor="let book of (books | async); let i = index; trackBy: trackBook"></app-book-result>
+    </div>
+  </div>
+  <button *ngIf="state === 'inactive'" (click)="onAdd()" mat-button class="next-btn">
+    <h3>Add</h3>
+  </button>
+</div>

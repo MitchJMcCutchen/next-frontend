@@ -5,7 +5,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 
 export const coverAnim = trigger('coverAnim', [
   state('inactive', style({
-    transform: 'scale(.75)'
+    transform: 'scale(.7)'
   })),
   state('active', style({
     transform: 'scale(1)'

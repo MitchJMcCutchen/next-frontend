@@ -1,0 +1,4 @@
+<mat-icon>search</mat-icon>
+<form [formGroup]="searchForm">
+  <input formControlName="search" (keyup)="onKeyup($event)" #search type="text" />
+</form>

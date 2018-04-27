@@ -1,12 +1,12 @@
 import { createSelector } from '@ngrx/store';
 
-import { myShelfState } from '../reducers/my-shelf.reducer';
+import { getShelfState } from '../reducers/my-shelf.reducer';
 
 export const getBooks = createSelector(
-  myShelfState,
+  getShelfState,
   (state) => state.books
 );
 export const getCurrentBook = createSelector(
-  myShelfState,
+  getShelfState,
   (state) => state.current
 );

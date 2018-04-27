@@ -48,13 +48,13 @@ export class BookComponent implements OnInit {
   get indexDif() {
     const indexDif = this.bookIndex - this.currentIndex;
     if (indexDif === 1 || indexDif === -1) {
-        return {'transform': `translate(${indexDif * 64}%)`};
+        return {'transform': `translate(${(indexDif * 64) - 50}%, -15%)`};
     } else if (indexDif > 1) {
-      return {'transform': `translate(${(indexDif + 2) * 32}%)`};
+      return {'transform': `translate(${((indexDif + 2) * 32) - 84}%, -15%)`};
     } else if (indexDif < -1) {
-      return {'transform': `translate(${(indexDif - 2) * 32}%)`};
+      return {'transform': `translate(${((indexDif - 2) * 32) + 84}%, -15%)`};
     }
-    return {'transform': 'translate(0%, 0%)'};
+    return {'transform': 'translate(-50%, -15%)'};
   }
 
   constructor(

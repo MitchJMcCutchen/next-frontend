@@ -1,0 +1,7 @@
+<div class="container" [ngStyle]="indexDif">
+  <h3 [@titleAnim]="state">{{ book.volumeInfo.title }}</h3>
+  <p [@authorAnim]="state"*ngFor="let author of book.volumeInfo.authors">
+    {{ author }}
+  </p>
+  <img [@coverAnim]="state" [className]="state" (click)="onSelect()" src="{{ cover }}"/>
+</div>
