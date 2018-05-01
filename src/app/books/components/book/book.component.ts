@@ -50,9 +50,9 @@ export class BookComponent implements OnInit {
     if (indexDif === 1 || indexDif === -1) {
         return {'transform': `translate(${(indexDif * 64) - 50}%, -15%)`};
     } else if (indexDif > 1) {
-      return {'transform': `translate(${((indexDif + 2) * 32) - 84}%, -15%)`};
+      return {'transform': `translate(${((indexDif) * 30) - 16}%, -15%)`};
     } else if (indexDif < -1) {
-      return {'transform': `translate(${((indexDif - 2) * 32) + 84}%, -15%)`};
+      return {'transform': `translate(${((indexDif) * 30) - 84}%, -15%)`};
     }
     return {'transform': 'translate(-50%, -15%)'};
   }

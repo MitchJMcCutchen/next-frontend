@@ -23,3 +23,22 @@ export const getCurrentSearchBook = createSelector(
   (state) => state.currentResult
 );
 
+export const getSelectedBook = createSelector(
+  getSearch,
+  (state) => state.selectedBook
+);
+
+export const getRatingStep = createSelector(
+  getSelectedBook,
+  (state) => state.step
+);
+
+export const getSearchLoading = createSelector(
+  getSearch,
+  (state) => state.loading
+);
+
+export const getSearchLoaded = createSelector(
+  getSearch,
+  (state) => state.loaded
+);

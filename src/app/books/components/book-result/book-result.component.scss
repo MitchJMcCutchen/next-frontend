@@ -24,3 +24,13 @@
     text-align: center;
   }
 }
+.text-container {
+  height: 100px;
+  h3 {
+    font-size: rem(16);
+    margin: rem(10) 0 0;
+  }
+  p {
+    margin: rem(8) 0 0;
+  }
+}

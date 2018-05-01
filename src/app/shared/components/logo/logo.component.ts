@@ -6,12 +6,17 @@ import { Observable } from 'rxjs/Observable';
 
 import { getCurrentUrl } from '../../../store/selectors/router.selectors';
 import { IAppState } from './../../../interfaces/IAppState.interface';
+import { booksTitle, logoSquare } from './../../../login/animations/sign-in-logo.animation';
 import { getRouterState } from './../../../store/reducers/router.reducer';
 
 @Component({
   selector: 'app-logo',
   templateUrl: './logo.component.html',
-  styleUrls: ['./logo.component.scss']
+  styleUrls: ['./logo.component.scss'],
+  animations: [
+    logoSquare,
+    booksTitle
+  ]
 })
 export class LogoComponent implements OnInit {
 
