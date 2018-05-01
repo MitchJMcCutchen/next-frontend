@@ -1,0 +1,34 @@
+<button class="clear-btn" (click)="onBack()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+<div class="rating-container">
+  <div class="plot">
+    <mat-icon matTooltip="plot" matTooltipPosition="above" *ngIf="ratingForm.value.plot">bookmark</mat-icon>
+    <mat-icon matTooltip="plot" matTooltipPosition="above" *ngIf="ratingForm.value.plot === false">bookmark_border</mat-icon>
+  </div>
+  <div class="character">
+    <mat-icon matTooltip="characters" matTooltipPosition="above" *ngIf="ratingForm.value.characters">bookmark</mat-icon>
+    <mat-icon matTooltip="characters" matTooltipPosition="above" *ngIf="ratingForm.value.characters === false">bookmark_border</mat-icon>
+  </div>
+  <div class="style">
+    <mat-icon matTooltip="writing style" matTooltipPosition="above" *ngIf="ratingForm.value.style">bookmark</mat-icon>
+    <mat-icon matTooltip="writing style" matTooltipPosition="above" *ngIf="ratingForm.value.style === false">bookmark_border</mat-icon>
+  </div>
+  <div class="genre">
+    <mat-icon matTooltip="genre" matTooltipPosition="above" *ngIf="ratingForm.value.genre">bookmark</mat-icon>
+    <mat-icon matTooltip="genre" matTooltipPosition="above" *ngIf="ratingForm.value.genre === false">bookmark_border</mat-icon>
+  </div>
+  <div class="overall">
+    <mat-icon matTooltip="overall" matTooltipPosition="above" *ngIf="ratingForm.value.overall">bookmark</mat-icon>
+    <mat-icon matTooltip="overall" matTooltipPosition="above" *ngIf="ratingForm.value.overall === false">bookmark_border</mat-icon>
+  </div>
+</div>
+<div class="picker">
+  <h3 class="message">{{ stepMessage }}</h3>
+  <div *ngIf="currentStep !== 'complete'" class="values">
+    <mat-icon (click)="onSelect(false)">bookmark_border</mat-icon>
+    <h3>or</h3>
+    <mat-icon (click)="onSelect(true)">bookmark</mat-icon>
+  </div>
+  <div *ngIf="currentStep === 'complete'">
+    <button mat-button (click)="onAddBook()" class='next-btn'>Add to shelf</button>
+  </div>
+</div>

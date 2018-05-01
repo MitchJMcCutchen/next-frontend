@@ -1,0 +1,15 @@
+<div [@flipContent]="state" class="container">
+  <div class="background" [@backgroundOpacity]="step$ | async"></div>
+  <img src="{{ (cover | async ) }}"/>
+  <div class="info">
+    <div class="title-container">
+      <h3>{{ (book | async).volumeInfo.title }}</h3>
+      <p>
+        <span *ngFor="let author of (book | async).volumeInfo.authors; let i = index">
+          <span *ngIf="i > 0">, </span>{{ author }}
+        </span>
+      </p>
+    </div>
+    <app-rating-selector (add)="onAddBook($event)"></app-rating-selector>
+  </div>
+</div>

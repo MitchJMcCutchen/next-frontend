@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
+import { SetSelectBookAction } from '../../store/actions/selected-book.action';
 import { IAppState } from './../../../interfaces/IAppState.interface';
 import { authorAnim, coverAnim, titleAnim } from './../../animations/book.animations';
 import { IBookResult } from './../../interfaces/IBookSearch.interface';
@@ -25,6 +26,8 @@ export class BookResultComponent implements OnInit {
 
   @Input() book: IBookResult;
   @Input() bookIndex: number;
+
+  @Output() selected: EventEmitter<any> = new EventEmitter();
 
   get cover() {
     if (this.book.volumeInfo.imageLinks) {
@@ -52,7 +55,7 @@ export class BookResultComponent implements OnInit {
     } else if (indexDif > 1) {
       return {'transform': `translate(${((indexDif + 2) * 32) - 84}%, -15%)`};
     } else if (indexDif < -1) {
-      return {'transform': `translate(${((indexDif - 2) * 32) + 84}%, -15%)`};
+      return {'transform': `translate(${((indexDif - 66) * 32) + 84}%, -15%)`};
     }
     return {'transform': 'translate(-50%, -15%)'};
   }
@@ -71,7 +74,8 @@ export class BookResultComponent implements OnInit {
   }
 
   onSelect() {
-    console.log('selected');
+    this.selected.emit();
+    this.store.dispatch(new SetSelectBookAction(this.book));
   }
 
 }

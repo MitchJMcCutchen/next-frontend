@@ -3,10 +3,17 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import { IAppState } from '../../../interfaces/IAppState.interface';
-import { getSearchResults } from '../../store/selectors/search.selectors';
-import { addBoxAnim } from './../../animations/add.animations';
+import {
+  getCurrentSearchBook,
+  getSearchField,
+  getSearchLoaded,
+  getSearchLoading,
+  getSearchResults,
+} from '../../store/selectors/search.selectors';
+import { addBoxAnim, flipContent } from './../../animations/add.animations';
 import { IBookResult } from './../../interfaces/IBookSearch.interface';
 import { OpenSearchAction } from './../../store/actions/open-search.action';
+import { SearchNextAction } from './../../store/actions/search-next.action';
 import { ShiftBooksResultAction } from './../../store/actions/shift-book-results.action';
 import { ShiftBooksAction } from './../../store/actions/shift-books.action';
 
@@ -15,14 +22,23 @@ import { ShiftBooksAction } from './../../store/actions/shift-books.action';
   templateUrl: './add-container.component.html',
   styleUrls: ['./add-container.component.scss'],
   animations: [
-    addBoxAnim
+    addBoxAnim,
+    flipContent
   ]
 })
 export class AddContainerComponent implements OnInit {
 
   state = 'inactive';
+  flipState = 'in';
 
   bookResults$: Observable<IBookResult[]>;
+  loading$: Observable<boolean>;
+  loaded$: Observable<boolean>;
+
+  currentIndex;
+  totalItems;
+  displayedResults;
+  searchField;
 
   get books() {
     return this.bookResults$;
@@ -32,6 +48,14 @@ export class AddContainerComponent implements OnInit {
     public store: Store<IAppState>
   ) {
     this.bookResults$ = this.store.select(getSearchResults);
+    this.store.select(getCurrentSearchBook).subscribe(res => {
+      this.currentIndex = res.index;
+      this.totalItems = res.totalItems;
+    });
+    this.bookResults$.subscribe(res => this.displayedResults = res.length);
+    this.store.select(getSearchField).subscribe(res => this.searchField = res);
+    this.loading$ = this.store.select(getSearchLoading);
+    this.loaded$ = this.store.select(getSearchLoaded);
   }
 
   ngOnInit() {
@@ -39,6 +63,12 @@ export class AddContainerComponent implements OnInit {
 
   onAdd() {
     this.store.dispatch(new OpenSearchAction());
+    if (this.displayedResults > 0) {
+      this.state = 'search';
+      return setTimeout(() => {
+        this.state = 'show';
+      }, 350);
+    }
     this.state = 'search';
   }
 
@@ -47,16 +77,35 @@ export class AddContainerComponent implements OnInit {
   }
 
   onClose() {
-    this.state = 'inactive';
+    this.state = 'search';
+    setTimeout(() => {
+      this.state = 'inactive';
+    }, 200);
     this.store.dispatch(new ShiftBooksAction(1));
   }
 
   onNext() {
+    console.log(this.displayedResults - 1 + ' = ' + this.currentIndex);
+    console.log(this.displayedResults + ' < ' + this.totalItems);
+    if (this.displayedResults - 1 === this.currentIndex && this.displayedResults < this.totalItems) {
+      this.store.dispatch(new SearchNextAction(this.searchField, this.currentIndex + 1));
+    }
     this.store.dispatch(new ShiftBooksResultAction(1));
   }
 
   onPrevious() {
     this.store.dispatch(new ShiftBooksResultAction(-1));
+  }
+
+  onSelect() {
+    this.state = 'add';
+  }
+
+  onComplete() {
+    this.state = 'complete';
+    setTimeout(() => {
+      this.state = 'inactive';
+    }, 600);
   }
 
   trackBook(index, book) {

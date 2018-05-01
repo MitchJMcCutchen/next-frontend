@@ -4,10 +4,17 @@
     <app-search (searching)="onSearch()" *ngIf="state === 'search' || state === 'show'">
     </app-search>
     <div class="show-results" *ngIf="state === 'show'">
-      <app-book-result [book]="book" [bookIndex]="i" *ngFor="let book of (books | async); let i = index; trackBy: trackBook"></app-book-result>
-      <button class="clear-btn left" (click)="onNext()"><mat-icon>keyboard_arrow_left</mat-icon></button>
-      <button class="clear-btn right" (click)="onPrevious()"><mat-icon>keyboard_arrow_right</mat-icon></button>
+      <app-book-result (selected)="onSelect()" [book]="book" [bookIndex]="i" *ngFor="let book of (books | async); let i = index; trackBy: trackBook"></app-book-result>
+      <button [disabled]="currentIndex === 0" class="clear-btn left" (click)="onPrevious()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+      <button [disabled]="currentIndex === totalItems - 1" class="clear-btn right" (click)="onNext()"><mat-icon>keyboard_arrow_right</mat-icon></button>
+      <div class="loading">
+        <mat-spinner *ngIf="(loading$ | async)"></mat-spinner>
+        <div class="error" *ngIf="!(loading$ | async) && !(loaded$ | async)">
+          <h3>Failed to load</h3>
+        </div>
+      </div>
     </div>
+    <app-rate (complete)="onComplete()" *ngIf="state === 'add'"></app-rate>
   </div>
   <button *ngIf="state === 'inactive'" (click)="onAdd()" mat-button class="next-btn">
     <h3>Add</h3>

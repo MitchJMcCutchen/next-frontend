@@ -37,6 +37,7 @@
 .clear-btn {
   position: absolute;
   top: rem(133);
+  cursor: pointer;
   mat-icon {
     color: map-get($colors, white);
     font-size: rem(40);
@@ -48,4 +49,17 @@
   &.right {
     right: rem(30);
   }
+  &:hover {
+    transform: scale(1.2);
+  }
+  &:disabled {
+    opacity: 0;
+    cursor: initial;
+  }
+}
+.loading {
+  position: absolute;
+  margin-top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

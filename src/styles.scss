@@ -8,6 +8,7 @@ $colors: (
   gray: #979797,
   next-yellow: #FEC967,
   next-red: #E97565,
+  next-blue: #0A7392,
   next-red-transparent: rgba(255, 227, 174, 0.3)
 );
 // Functions
@@ -27,6 +28,14 @@ $colors: (
 
 .mat-ripple-element {
   background-color: map-get($colors, next-red-transparent);
+}
+
+.loading {
+  mat-spinner {
+    circle {
+      stroke: map-get($colors, white);
+    }
+  }
 }
 
 html,

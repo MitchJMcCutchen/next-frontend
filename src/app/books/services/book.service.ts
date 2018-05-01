@@ -22,4 +22,12 @@ export class BookService {
     return this.http.get(`${this.API_URL}/books/search/${search}`);
   }
 
+  searchBooksIndex(search, index): Observable<any> {
+    return this.http.get(`${this.API_URL}/books/search/${search}/${index}`);
+  }
+
+  addBook(body): Observable<any> {
+    return this.http.post(`${this.API_URL}/booklist/add`,  body);
+  }
+
 }
