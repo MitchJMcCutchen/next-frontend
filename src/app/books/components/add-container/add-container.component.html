@@ -1,4 +1,29 @@
-<div class="close" (click)="onClose()" *ngIf="state !== 'inactive'"></div>
+<div class="close" (click)="onClose()" *ngIf="state !== 'inactive'">
+</div>
+<div class="tutorial" *ngIf="state !== 'inactive' && (booksOnShelf$ | async).length < 1">
+  <p class="tutorial step-1" *ngIf="state === 'search'">
+    The more books you add the better, so it's a good idea
+    to go through your bookshelf at home and add them all!
+    Or just a few. Whatever, it's up to you.
+  </p>
+  <p class="tutorial step-2" *ngIf="state === 'show'">
+    The first book you add is probably one of
+    your favorites. That's great! For the best
+    recommendations, your shelf should include
+    at least a few books you didn't care for as
+    well. But that can come later.
+  </p>
+  <p class="tutorial step-3" *ngIf="state === 'add' && (currentStep$ | async) === 'plot'">
+    No more ambiguous 5 stars!
+    We'll give you 5 categories, you decide
+    if you liked each one or note. Easy, right?
+  </p>
+  <p class="tutorial step-4" *ngIf="state === 'add' && (currentStep$ | async) === 'complete'">
+    Once you add a book to your shelf we can use your thoughts
+    on each category to match you up with people who felt the
+    same way.
+  </p>
+</div>
 <div class="view">
   <div [@addBoxAnim]="state" class="add-container">
     <app-search (searching)="onSearch()" *ngIf="state === 'search' || state === 'show'">
@@ -14,7 +39,7 @@
         </div>
       </div>
     </div>
-    <app-rate (complete)="onComplete()" *ngIf="state === 'add'"></app-rate>
+    <app-rate (back)="onSearch()" (complete)="onComplete()" *ngIf="state === 'add'"></app-rate>
   </div>
   <button *ngIf="state === 'inactive'" (click)="onAdd()" mat-button class="next-btn">
     <h3>Add</h3>

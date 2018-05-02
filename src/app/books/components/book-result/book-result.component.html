@@ -1,9 +1,12 @@
 <div class="container" [ngStyle]="indexDif">
+  <div class="on-shelf" *ngIf="onShelf">
+    <h3>ON YOUR SHELF</h3>
+  </div>
   <div class="text-container">
     <h3 [@titleAnim]="state">{{ book.volumeInfo.title }}</h3>
     <p [@authorAnim]="state"*ngFor="let author of book.volumeInfo.authors">
       {{ author }}
     </p>
   </div>
-  <img [@coverAnim]="state" [className]="state" (click)="onSelect()" src="{{ cover }}"/>
+  <img [@coverAnim]="state" [class.active]="state === 'active'" [class.no-select]="onShelf" (click)="onSelect()" src="{{ cover }}"/>
 </div>

@@ -8,17 +8,28 @@
   position: absolute;
   transition: transform .2s ease-in-out;
   transition-delay: .3s;
+  pointer-events: none;
   img {
     display: block;
+    position: relative;
     width: rem(128);
     height: rem(192);
     margin: auto;
     transform-origin: 50% 100%;
-    transition: box-shadow .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out, top .5s ease-in-out;
     transition-delay: 0s;
+    pointer-events: initial;
+    cursor: pointer;
     &.active {
       box-shadow: 0 0 15px rgba(0,0,0,0.3);
       transition-delay: .3s;
+      cursor: initial;
+      &:hover {
+        top: 0;
+      }
+    }
+    &:hover {
+      top: rem(-10);
     }
   }
   h3, p {

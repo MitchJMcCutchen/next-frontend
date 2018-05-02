@@ -46,6 +46,7 @@ app-root {
   padding: 0;
   background-color: map-get($colors, white);
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 h1, h2, h3, h4, p {

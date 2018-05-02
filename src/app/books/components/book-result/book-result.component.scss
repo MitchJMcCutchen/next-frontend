@@ -18,6 +18,10 @@
     &.active {
       box-shadow: 0 0 15px rgba(0,0,0,0.3);
       transition-delay: .3s;
+      cursor: pointer;
+    }
+    &.no-select {
+      cursor: initial;
     }
   }
   h3, p {
@@ -32,5 +36,21 @@
   }
   p {
     margin: rem(8) 0 0;
+  }
+}
+.on-shelf {
+  position: absolute;
+  width: rem(169);
+  left: 50%;
+  top: rem(172);
+  transform: translateX(-50%);
+  background: map-get($colors, next-red);
+  border-radius: 0 rem(8);
+  z-index: 10;
+  box-shadow: 0 0 rem(15) rgba(0,0,0,0.3);
+  h3 {
+    font-size: rem(12);
+    color: map-get($colors, white);
+    letter-spacing: rem(.5);
   }
 }

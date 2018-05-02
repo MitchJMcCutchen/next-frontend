@@ -19,6 +19,9 @@ export class RatingSelectorComponent implements OnInit {
   @Output()
   add: EventEmitter<any> = new EventEmitter();
 
+  @Output()
+  back: EventEmitter<any> = new EventEmitter();
+
   currentStep;
 
   steps = [
@@ -95,6 +98,8 @@ export class RatingSelectorComponent implements OnInit {
       patchVal[this.steps[index - 1]] = undefined;
       this.ratingForm.patchValue(patchVal, {onlySelf: true});
       this.store.dispatch(new RatingStepAction(this.steps[index - 1], this.ratingForm.value));
+    } else if (index === 0) {
+      this.back.emit();
     }
   }
 
