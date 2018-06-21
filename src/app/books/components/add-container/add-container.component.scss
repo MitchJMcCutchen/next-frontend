@@ -69,6 +69,7 @@
   left: 0;
   bottom: 0;
   position: absolute;
+  pointer-events: none;
   .step-1 {
     width: rem(314);
     margin: rem(442) 0 0;
