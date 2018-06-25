@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /next/next-frontend
+    destination: /next-app/next-frontend
 hooks:
   - AfterInstall:
     - location: scripts/docker.sh
