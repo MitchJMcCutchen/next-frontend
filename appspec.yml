@@ -6,7 +6,5 @@ files:
   - source: .
     destination: /next/next-frontend
 hooks:
-  - BeforeInstall:
   - AfterInstall:
-    - cd next
-    - docker-compose up
+    - location: scripts/docker.sh
