@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: ../docker-compose.yml
+    destination: /next
+  - source: .
+    destination: /next/next-frontend
+hooks:
+  - AfterInstall:
+    - 'cd next && docker-compose up'
