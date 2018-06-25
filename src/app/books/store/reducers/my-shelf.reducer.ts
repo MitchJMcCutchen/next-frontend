@@ -8,7 +8,7 @@ import { IMyShelfState } from './../../interfaces/IMyShelfState.interface';
 
 const INITIAL_STATE: IMyShelfState = {
   current: {
-    index: -1,
+    index: 0,
     id: ''
   },
   books: [],
@@ -55,7 +55,9 @@ export function myShelfReducer(
       const newState = cloneDeep(state);
 
       return merge(newState, {
-        current: INITIAL_STATE.current
+        current: {
+          index: -1
+        }
       });
     }
     case actionTypes.SHIFT_BOOKS: {

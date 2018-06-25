@@ -16,6 +16,8 @@ import { OpenSearchAction } from './../../store/actions/open-search.action';
 import { SearchNextAction } from './../../store/actions/search-next.action';
 import { ShiftBooksResultAction } from './../../store/actions/shift-book-results.action';
 import { ShiftBooksAction } from './../../store/actions/shift-books.action';
+import { getBooks } from './../../store/selectors/my-shelf.selectors';
+import { getRatingStep } from './../../store/selectors/search.selectors';
 
 @Component({
   selector: 'app-add-container',
@@ -31,9 +33,11 @@ export class AddContainerComponent implements OnInit {
   state = 'inactive';
   flipState = 'in';
 
+  currentStep$: Observable<string>;
   bookResults$: Observable<IBookResult[]>;
   loading$: Observable<boolean>;
   loaded$: Observable<boolean>;
+  booksOnShelf$: Observable<any>;
 
   currentIndex;
   totalItems;
@@ -56,6 +60,8 @@ export class AddContainerComponent implements OnInit {
     this.store.select(getSearchField).subscribe(res => this.searchField = res);
     this.loading$ = this.store.select(getSearchLoading);
     this.loaded$ = this.store.select(getSearchLoaded);
+    this.currentStep$ = this.store.select(getRatingStep);
+    this.booksOnShelf$ = this.store.select(getBooks);
   }
 
   ngOnInit() {
@@ -85,8 +91,6 @@ export class AddContainerComponent implements OnInit {
   }
 
   onNext() {
-    console.log(this.displayedResults - 1 + ' = ' + this.currentIndex);
-    console.log(this.displayedResults + ' < ' + this.totalItems);
     if (this.displayedResults - 1 === this.currentIndex && this.displayedResults < this.totalItems) {
       this.store.dispatch(new SearchNextAction(this.searchField, this.currentIndex + 1));
     }

@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import { SetSelectBookAction } from '../../store/actions/selected-book.action';
+import { getBooks } from '../../store/selectors';
 import { IAppState } from './../../../interfaces/IAppState.interface';
 import { authorAnim, coverAnim, titleAnim } from './../../animations/book.animations';
 import { IBookResult } from './../../interfaces/IBookSearch.interface';
@@ -21,6 +22,9 @@ import { getCurrentSearchBook } from './../../store/selectors/search.selectors';
 export class BookResultComponent implements OnInit {
 
   current$: Observable<any>;
+  shelf$: Observable<any>;
+
+  onShelf: boolean;
 
   currentIndex;
 
@@ -66,16 +70,27 @@ export class BookResultComponent implements OnInit {
     this.current$ = this.store.select(getCurrentSearchBook);
     this.current$.subscribe(res => {
       this.currentIndex = res.index;
-      console.log(this.currentIndex);
     });
+    this.shelf$ = this.store.select(getBooks);
   }
 
   ngOnInit() {
+    this.shelf$.subscribe(books => {
+      const index = books.findIndex(book => {
+        return book.bookId === this.book.id
+        || book.title === this.book.volumeInfo.title;
+      });
+      if (index > -1) {
+        this.onShelf = true;
+      }
+    });
   }
 
   onSelect() {
-    this.selected.emit();
-    this.store.dispatch(new SetSelectBookAction(this.book));
+    if (!this.onShelf) {
+      this.selected.emit();
+      this.store.dispatch(new SetSelectBookAction(this.book));
+    }
   }
 
 }

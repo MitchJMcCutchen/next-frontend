@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import { authorAnim, coverAnim, titleAnim } from '../../animations/book.animations';
+import { ShiftBooksAction } from '../../store/actions/shift-books.action';
 import { getCurrentBook } from '../../store/selectors';
 import { IAppState } from './../../../interfaces/IAppState.interface';
 
@@ -48,7 +49,7 @@ export class BookComponent implements OnInit {
   get indexDif() {
     const indexDif = this.bookIndex - this.currentIndex;
     if (indexDif === 1 || indexDif === -1) {
-        return {'transform': `translate(${(indexDif * 64) - 50}%, -15%)`};
+      return {'transform': `translate(${(indexDif * 64) - 50}%, -15%)`};
     } else if (indexDif > 1) {
       return {'transform': `translate(${((indexDif) * 30) - 16}%, -15%)`};
     } else if (indexDif < -1) {
@@ -68,7 +69,10 @@ export class BookComponent implements OnInit {
   }
 
   onSelect() {
-    console.log('selected');
+    console.log('selected', this.bookIndex);
+    if (this.bookIndex - this.currentIndex !== 0) {
+      this.store.dispatch(new ShiftBooksAction(this.bookIndex - this.currentIndex));
+    }
   }
 
 }

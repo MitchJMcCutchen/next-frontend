@@ -22,6 +22,9 @@ export class RateComponent implements OnInit {
   @Output()
   complete: EventEmitter<any> = new EventEmitter();
 
+  @Output()
+  back: EventEmitter<any> = new EventEmitter();
+
   state = 'in';
 
   timeoutTrigger;
@@ -76,6 +79,10 @@ export class RateComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  onBack() {
+    this.back.emit();
   }
 
   onAddBook(rating) {

@@ -63,3 +63,38 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.tutorial {
+  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  pointer-events: none;
+  .step-1 {
+    width: rem(314);
+    margin: rem(442) 0 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  .step-2 {
+    width: rem(260);
+    margin: rem(630) auto 0;
+    left: 50%;
+    transform: translateX(-170%);
+    text-align: right;
+  }
+  .step-3 {
+    width: rem(200);
+    margin: rem(645) auto 0;
+    left: 50%;
+    transform: translateX(92%);
+  }
+  .step-4 {
+    width: rem(300);
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: rem(375);
+  }
+}
