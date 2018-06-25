@@ -7,4 +7,5 @@ files:
     destination: /next/next-frontend
 hooks:
   - AfterInstall:
-    - 'cd next && docker-compose up'
+    - cd next
+    - docker-compose up
