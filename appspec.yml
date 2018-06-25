@@ -3,10 +3,3 @@ os: linux
 files:
   - source: /
     destination: /next-app/next-frontend
-hooks:
-  - BeforeInstall:
-    - location: scripts/before.sh
-  - ApplicationStart:
-    - location: scripts/docker.sh
-      timeout: 300
-      runas: root
