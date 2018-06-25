@@ -1,10 +1,10 @@
 version: 0.0
 os: linux
 files:
-  - source: ../docker-compose.yml
-    destination: /next
-  - source: .
+  - source: /
     destination: /next/next-frontend
 hooks:
   - AfterInstall:
     - location: scripts/docker.sh
+      timeout: 300
+      runas: root
