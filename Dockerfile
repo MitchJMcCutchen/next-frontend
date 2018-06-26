@@ -1,15 +1,8 @@
 FROM node:latest
 
-RUN mkdir -p /usr/src/app
+RUN yum update -y
+RUN yum install httpd
 
-WORKDIR /usr/src/app
+ADD ./dist /var/www/
 
-ADD package.json /usr/src/app
-
-RUN npm install
-
-ADD . /usr/src/app
-
-EXPOSE 4200
-
-CMD ["npm", "start"]
+EXPOSE 80

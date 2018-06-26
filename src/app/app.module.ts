@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BooksModule } from './books/books.module';
 import { GetMyShelfEffect } from './books/store/effects/get-shelf.effect';
+import { bookReducer } from './books/store/reducers';
 import { myShelfReducer } from './books/store/reducers/my-shelf.reducer';
 import { searchReducer } from './books/store/reducers/search.reducer';
 import { LoginModule } from './login/login.module';
@@ -35,7 +36,7 @@ import { CustomSerializer } from './store/reducers/router.reducer';
     StoreModule.forRoot({
       router: routerReducer,
       user: userReducer,
-      myShelf: combineReducers(myShelfReducer, searchReducer)
+      myShelf: bookReducer
     }),
     EffectsModule.forRoot([
       GetMyShelfEffect
